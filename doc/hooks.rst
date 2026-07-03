@@ -213,7 +213,8 @@ Game controllers also have their own events:
 
 .. function:: on_music_end()
 
-    Called when a :ref:`music track <music>` finishes.
+    Called when a :ref:`music track <music>` finishes or playback is stopped
+    with ``music.stop()``.
 
     Note that this will not be called if the track is configured to loop.
 

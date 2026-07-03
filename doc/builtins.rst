@@ -263,28 +263,26 @@ with this code::
 Each loaded sound is a Pygame ``Sound``, and has various methods to play and
 stop the sound as well as query its length in seconds:
 
-.. class:: Sound
+.. method:: sounds.filename.play()
+    :noindex:
 
-    .. method:: play()
-        :noindex:
+    Play the sound.
 
-        Play the sound.
+.. method:: sounds.filename.play(loops)
 
-    .. method:: play(loops)
+    Play the sound, but loop it a number of times.
 
-        Play the sound, but loop it a number of times.
+    :param loops: The number of times to loop. If you pass ``-1`` as the
+                  number of times to loop, the sound will loop forever (or
+                  until you call :meth:`.Sound.stop()`
 
-        :param loops: The number of times to loop. If you pass ``-1`` as the
-                      number of times to loop, the sound will loop forever (or
-                      until you call :meth:`.Sound.stop()`
+.. method:: sounds.filename.stop()
 
-    .. method:: stop()
+    Stop playing the sound.
 
-        Stop playing the sound.
+.. method:: sounds.filename.get_length()
 
-    .. method:: get_length()
-
-        Get the duration of the sound in seconds.
+    Get the duration of the sound in seconds.
 
 You should avoid using the ``sounds`` object to play longer pieces of music.
 Because the sounds sytem will fully load the music into memory before playing
@@ -316,9 +314,9 @@ This would play the file ``main_menu.ogg`` or ``main_menu.mp3`` or any other
 valid format found in the ``music`` directory next to your main game file. The
 following methods are available to use with any music track:
 
-.. method:: play(name)
+.. method:: music.filename.play()
 
-    Play the given music track, looping indefinitely.
+    Play the music track, looping indefinitely.
 
     This replaces the currently playing track and cancels any tracks previously
     queued with ``queue()``.
@@ -328,11 +326,11 @@ following methods are available to use with any music track:
 
         music.handel.play()
 
-.. method:: play_once(name)
+.. method:: music.filename.play_once()
 
     Similar to ``play()``, but the music will stop after playing through once.
 
-.. method:: queue(name)
+.. method:: music.filename.queue()
 
     Prepares the track to be played once after the current track finishes
     playing. This only makes sense to use if you used ``play_once()`` before.
