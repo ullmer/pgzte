@@ -32,7 +32,7 @@ class _MusicObject:
 
     def queue(self):
         """Queue up the track to follow the current one."""
-        _music.queue(self.path)
+        _music.queue(self._path)
 
 
 class _MusicLoader(ResourceLoader):
