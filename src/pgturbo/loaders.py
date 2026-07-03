@@ -360,7 +360,7 @@ class SpritesheetLoader(ResourceLoader):
 
 
 class SoundLoader(ResourceLoader):
-    EXTNS = ['wav', 'ogg', 'oga']
+    EXTNS = ['wav', 'mp3', 'ogg', 'oga', 'flac', 'opus']
     TYPE = 'sound'
 
     def _load(self, path):

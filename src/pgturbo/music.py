@@ -31,6 +31,7 @@ class _MusicObject:
         self._play(0)
 
     def queue(self):
+        """Queue up the track to follow the current one."""
         _music.queue(self.path)
 
 
@@ -45,7 +46,7 @@ class _MusicLoader(ResourceLoader):
     For backwards compatibility however, the previous functions are all
     preserved like so: music.play("filename")
     """
-    EXTNS = ['mp3', 'ogg', 'oga']
+    EXTNS = ['wav', 'mp3', 'ogg', 'oga', 'flac', 'opus']
     TYPE = 'music'
 
     def __init__(self, subpath):
@@ -53,7 +54,7 @@ class _MusicLoader(ResourceLoader):
         # This is just used to be able to tell when music is paused instead of
         # there simply being no music loaded in at all.
         self._paused = False
-        self._volume = 1.0
+        self._volume = 0.75
 
     def _load(self, path):
         return _MusicObject(self, path)
