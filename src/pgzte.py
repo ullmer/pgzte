@@ -4,6 +4,9 @@
 # pgzte is initially agnostic between Pygame Turbo and Zero, offering a preferential setting, 
 # with fallback; and agnostic to the incorporation of additional Enodia features.
 
+# pgzte lead: Brygg Ullmer, Clemson University
+# Begun 2026-07-04
+
 # This should probably evolve, but for starters:
 preferPgxVariantPrimary   = "pgturbo"
 preferPgxVariantSecondary = "pgzero"
