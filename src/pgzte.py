@@ -9,17 +9,17 @@ preferPgxVariantPrimary   = "pgturbo"
 preferPgxVariantSecondary = "pgzero"
 
 try:
-  if preferPgxVariantPrimary is "pgturbo": import pgturbo
-  if preferPgxVariantPrimary is "pgzero":  import pgzero
+  if preferPgxVariantPrimary == "pgturbo": import pgturbo
+  if preferPgxVariantPrimary == "pgzero":  import pgzero
   print("pgzte: preferred primary pgx variant import succeeds")
 except:
-  print("pgzte: preferred primary pgx variant", preferPgxVariantPrimary, " import fails; trying secondary"
+  print("pgzte: preferred primary pgx variant", preferPgxVariantPrimary, "import fails; trying secondary")
 
   try:
-    if preferPgxVariantSecondary is "pgturbo": import pgturbo
-    if preferPgxVariantSecondary is "pgzero":  import pgzero
-    print("pgzte: secondary primary pgx variant import succeeds")
+    if preferPgxVariantSecondary == "pgturbo": import pgturbo
+    if preferPgxVariantSecondary == "pgzero":  import pgzero
+    print("pgzte: secondary primary pgx variant", preferPgxVariantSecondary, "import succeeds")
   except:
-    print("pgzte: preferred secondary pgx variant", preferPgxVariantSecondary, " import fails.")
+    print("pgzte: preferred secondary pgx variant", preferPgxVariantSecondary, "import fails.")
 
 ### end ###
