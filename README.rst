@@ -10,8 +10,8 @@ setting, with fallback; and agnostic to the incorporation of additional Enodia f
 In Greek mythology, Enodia watched over entrances, standing on the main road into a city, 
 and in the roads to private houses. She also was associated with crossroads, light, and 
 passages between ~worlds.  Prior Enodia code contributions are spread between:
- - https://github.com/ullmer/enodia
  - https://github.com/ullmer/Enodia-Pgzero
+ - https://github.com/ullmer/enodia
  - https://github.com/ullmer/tangibles
  - https://github.com/ullmer/plasma
  - https://github.com/ullmer/designThinking
