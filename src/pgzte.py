@@ -14,7 +14,7 @@ preferPgxVariantSecondary = "pgzero"
 try:
   if preferPgxVariantPrimary == "pgturbo": import pgturbo
   if preferPgxVariantPrimary == "pgzero":  import pgzero
-  print("pgzte: preferred primary pgx variant import succeeds")
+  print("pgzte: preferred primary pgx variant", preferPgxVariantPrimary, "import succeeds")
 except:
   print("pgzte: preferred primary pgx variant", preferPgxVariantPrimary, "import fails; trying secondary")
 
