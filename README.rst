@@ -93,6 +93,8 @@ Feature enhancements
 * Schedule functions with arguments instead of only ones without any.
 * Optionally schedule functions in absolute time unaffected by
   ``clock.timescale``.
+* Aligned usage of ``music`` builtin with the other resource loaders for less
+  friction in use.
 
 
 Bug fixes

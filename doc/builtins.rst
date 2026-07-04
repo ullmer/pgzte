@@ -297,6 +297,8 @@ Music
 
 .. versionadded:: 1.1
 
+.. versionchanged:: 1.12
+
 A built-in object called ``music`` provides access to play music from within
 a ``music/`` directory (alongside your ``images/`` and ``sounds/`` directories,
 if you have them). The music system will load the track a little bit at a time

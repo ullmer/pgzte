@@ -57,6 +57,8 @@ Feature enhancements
 * Schedule functions with arguments instead of only ones without any.
 * Optionally schedule functions in absolute time unaffected by
   ``clock.timescale``.
+* Aligned usage of ``music`` builtin with the other resource loaders for less
+  friction in use.
 
 
 Bug fixes
@@ -76,6 +78,12 @@ Dependencies
   developed more actively and causes fewer installation problems.
 * Removed the dependency on ``pyfxr`` for tone synthesis. The same
   functionality is now provided with ``numpy`` and ``pygame`` themselves.
+
+
+1.12.0 - 2026-07-04
+-------------------
+
+Reworked ``music`` builtin to align better with the other resource loaders.
 
 
 1.11.0 - 2026-06-22
