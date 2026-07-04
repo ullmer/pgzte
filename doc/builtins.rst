@@ -243,10 +243,10 @@ to query the size of the image in pixels:
 Sounds
 ''''''
 
-Pygame Turbo can load sounds in ``.wav`` and ``.ogg`` formats. WAV is great for
-small sound effects, while OGG is a compressed format that is more suited to
-music. You can find free .ogg and .wav files online that can be used in your
-game.
+Pygame Turbo can load sounds in multiple different formats: ``.wav``, ``.mp3``,
+``.ogg``, ``.oga``, ``.flac`` and ``.opus``. You'll likely most often work with
+``.wav``, ``.mp3`` or ``.ogg`` files since you can find many great sound and
+music files in these formats online for free to use in your games.
 
 We need to ensure a sounds directory is set up. If your project contains the
 following files::
@@ -263,33 +263,32 @@ with this code::
 Each loaded sound is a Pygame ``Sound``, and has various methods to play and
 stop the sound as well as query its length in seconds:
 
-.. class:: Sound
+.. method:: sounds.filename.play()
+    :noindex:
 
-    .. method:: play()
-        :noindex:
+    Play the sound.
 
-        Play the sound.
+.. method:: sounds.filename.play(loops)
 
-    .. method:: play(loops)
+    Play the sound, but loop it a number of times.
 
-        Play the sound, but loop it a number of times.
+    :param loops: The number of times to loop. If you pass ``-1`` as the
+                  number of times to loop, the sound will loop forever (or
+                  until you call :meth:`.Sound.stop()`
 
-        :param loops: The number of times to loop. If you pass ``-1`` as the
-                      number of times to loop, the sound will loop forever (or
-                      until you call :meth:`.Sound.stop()`
+.. method:: sounds.filename.stop()
 
-    .. method:: stop()
+    Stop playing the sound.
 
-        Stop playing the sound.
+.. method:: sounds.filename.get_length()
 
-    .. method:: get_length()
-
-        Get the duration of the sound in seconds.
+    Get the duration of the sound in seconds.
 
 You should avoid using the ``sounds`` object to play longer pieces of music.
 Because the sounds sytem will fully load the music into memory before playing
 it, this can use a lot of memory, as well as introducing a delay while the
 music is loaded.
+
 
 .. _music:
 
@@ -298,34 +297,26 @@ Music
 
 .. versionadded:: 1.1
 
-.. warning::
-
-    The music API is experimental and may be subject to cross-platform
-    portability issues.
-
-    In particular:
-
-    * MP3 may not be available on some Linux distributions.
-    * Some OGG Vorbis files seem to hang Pygame with 100% CPU.
-
-    In the case of the latter issue, the problem may be fixed by re-encoding
-    (possibly with a different encoder).
-
-
 A built-in object called ``music`` provides access to play music from within
 a ``music/`` directory (alongside your ``images/`` and ``sounds/`` directories,
 if you have them). The music system will load the track a little bit at a time
 while the music plays, avoiding the problems with using ``sounds`` to play
-longer tracks.
+longer tracks. Just like for for sounds, the supported formats are ``.wav``,
+``.mp3``, ``.ogg``, ``.oga``, ``.flac`` and ``.opus``.
 
-Another difference to the sounds system is that only one music track can be
-playing at a time. If you play a different track, the previously playing track
-will be stopped.
+Only one music track can play at a time. If you play a different file, it will
+replace the previous one. To play a track, reference it like you would a sound
+as an attribute of the ``music`` builtin and call ``play()`` on it::
 
+    music.main_menu.play()
 
-.. function:: music.play(name)
+This would play the file ``main_menu.ogg`` or ``main_menu.mp3`` or any other
+valid format found in the ``music`` directory next to your main game file. The
+following methods are available to use with any music track:
 
-    Play a music track from the given file. The track will loop indefinitely.
+.. method:: music.filename.play()
+
+    Play the music track, looping indefinitely.
 
     This replaces the currently playing track and cancels any tracks previously
     queued with ``queue()``.
@@ -333,57 +324,96 @@ will be stopped.
     You do not need to include the extension in the track name; for example, to
     play the file ``handel.mp3`` on a loop::
 
-        music.play('handel')
+        music.handel.play()
 
-.. function:: music.play_once(name)
+.. method:: music.filename.play_once()
 
     Similar to ``play()``, but the music will stop after playing through once.
 
-.. function:: music.queue(name)
+.. method:: music.filename.queue()
 
-    Similar to ``play_once()``, but instead of stopping the current music, the
-    track will be queued to play after the current track finishes (or after
-    any other previously queued tracks).
+    Prepares the track to be played once after the current track finishes
+    playing. This only makes sense to use if you used ``play_once()`` before.
+    If you have the current music looping indefinitely, the queued track will
+    never play.
 
-.. function:: music.stop()
+To interact with running music, you use methods directly on the ``music``
+builtin itself:
 
-    Stop the music.
+.. method:: music.stop()
 
-.. function:: music.pause()
+    Stop music playback.
 
-    Pause the music temporarily. It can be resumed by calling
-    ``unpause()``.
+.. method:: music.pause()
 
-.. function:: music.unpause()
+    Pause the music temporarily. It can be resumed by calling ``unpause()``.
 
-    Unpause the music.
+.. method:: music.unpause()
 
-.. function:: music.is_playing()
+    Unpause music playback that was previously paused.
 
-    Returns True if the music is playing (and is not paused), False otherwise.
+.. method:: music.is_playing()
 
-.. function:: music.fadeout(duration)
+    Returns ``True`` if music is currently playing, ``False`` otherwise.
+
+.. method:: music.is_paused()
+
+    Returns ``True`` only if there is a current music track but it is paused,
+    ``False`` otherwise.
+
+.. method:: music.fadeout(duration)
 
     Fade out and eventually stop the current music playback.
 
     :param duration: The duration in seconds over which the sound will be faded
-                    out. For example, to fade out over half a second, call
-                    ``music.fadeout(0.5)``.
+                     out. For example, to fade out over half a second, call
+                     ``music.fadeout(0.5)``.
 
-.. function:: music.set_volume(volume)
+.. method:: music.set_volume(volume)
 
     Set the volume of the music system.
 
-    This takes a number between 0 (meaning silent) and 1 (meaning full volume).
+    This takes a number between ``0.0`` (meaning silent) and ``1.0`` (meaning
+    full volume).
 
-.. function:: music.get_volume()
+    By default, the music volume is set to ``0.75``.
+
+.. method:: music.get_volume()
 
     Get the current volume of the music system.
 
 
-If you have started a music track playing using :func:`music.play_once()`, you
-can use the :func:`on_music_end() hook <on_music_end>` to do something when the
-music ends - for example, to pick another track at random.
+The :func:`on_music_end() hook <on_music_end>` triggers whenever music stops
+playing, so both when you stop playback explicitely with ``music.stop()`` but
+also when a track you played with ``music.filename.play_once()`` is done.
+
+It does NOT trigger when a looping track finishes playing through once and
+begins to play again.
+
+
+.. warning::
+
+    There can be some cross-platform compatibility issues around audio file
+    formats.
+
+    In particular:
+
+    * MP3 may not be available on some Linux distributions, though this should
+      be fixed by installing the necessary package for MP3 support for that
+      distribution.
+    * Some OGG Vorbis files seem to hang Pygame with 100% CPU. This might be
+      fixed by re-encoding the file (possibly using a different encoder).
+
+
+.. note::
+
+    The recommended way to play music tracks is via ``music.filename.play()``
+    since this mirrors how the other resource loaders (``images`` and
+    ``sounds``) are used.
+
+    For backwards compatibility however, you can also still use the old way
+    instead: ``music.play("filename")``, ``music.play_once("filename")`` and
+    ``music.queue("filename")``.
 
 
 .. _mouse:

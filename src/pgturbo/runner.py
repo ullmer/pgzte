@@ -11,7 +11,11 @@ import sys
 import os
 import pygame
 from contextlib import contextmanager
-pygame.mixer.pre_init(frequency=22050, size=-16, channels=2)
+# PGTurbo used to initialize the mixer with frequency=22050 but this led to
+# music files of 44.1kHz not playing. Using frequency=44100 instead allows
+# playing music files of 44.1kHz and also those of 22050 while seemingly also
+# not breaking tone generation at 22050 Hertz and not affecting sound playback.
+pygame.mixer.pre_init(frequency=44100, size=-16, channels=2)
 pygame.init()
 
 # Before, running games in IDE mode would crash as image processing for actors
@@ -109,7 +113,7 @@ class NoMainModule(Exception):
 def load_and_run(path, *, fps: bool = False):
     """Load and run the given Python file or directory.
 
-    If a file, run this as the main PGZero game module.
+    If a file, run this as the main PGTurbo game module.
 
     If a directory, run the first file inside the directory containing:
 
