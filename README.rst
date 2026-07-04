@@ -1,8 +1,25 @@
-Pygame Turbo
+pgzte
 ============
 
-A quicker moving fork of the zero-boilerplate games programming framework
-Pygame Zero, based on Pygame.
+pgzte is a fork of Pygame Turbo, which is a more swiftly-evolving, pygame-ce 
+compliant fork of Pygame Zero, the zero-boilerplate games programming framework.
+
+pgzte is initially agnostic between Pygame Turbo and Zero, offering a preferential
+setting, with fallback; and agnostic to the incorporation of additional Enodia features.
+
+In Greek mythology, Enodia watched over entrances, standing on the main road into a city, 
+and in the roads to private houses. She also was associated with crossroads, light, and 
+passages between ~worlds.  Prior Enodia code contributions are spread between:
+- https://github.com/ullmer/enodia
+- https://github.com/ullmer/Enodia-Pgzero
+- https://github.com/ullmer/tangibles
+- https://github.com/ullmer/plasma
+- https://github.com/ullmer/designThinking
+- https://github.com/ullmer/enoPivy
+- https://github.com/ullmer/enoSolid
+- https://github.com/ullmer/enoTurtle
+- https://github.com/ullmer/plasma-java-jelly
+... and then some (sigh).
 
 The documentation for Pygame Turbo is found here:
 https://pgturbo.readthedocs.io/
