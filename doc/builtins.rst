@@ -405,6 +405,17 @@ begins to play again.
       fixed by re-encoding the file (possibly using a different encoder).
 
 
+.. note::
+
+    The recommended way to play music tracks is via ``music.filename.play()``
+    since this mirrors how the other resource loaders (``images`` and
+    ``sounds``) are used.
+
+    For backwards compatibility however, you can also still use the old way
+    instead: ``music.play("filename")``, ``music.play_once("filename")`` and
+    ``music.queue("filename")``.
+
+
 .. _mouse:
 
 Mouse
