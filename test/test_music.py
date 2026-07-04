@@ -1,8 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 from pgturbo.music import music, _MusicObject
-# Needed to patch pygame.mixer.music.play().
-import pygame
+
 
 class MusicTest(TestCase):
     def test_load_music(self):
