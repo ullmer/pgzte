@@ -18,9 +18,8 @@ try:
   if preferPgxVariantPrimary == "pgzero":  import pgzero
   if verbose: print("pgzte: preferred primary pgx variant", preferPgxVariantPrimary, "import succeeds")
 except:
-  print("pgzte: preferred primary pgx variant", preferPgxVariantPrimary, "import fails; trying secondary")
-
   try:
+    print("pgzte: preferred primary pgx variant", preferPgxVariantPrimary, "import fails; trying secondary")
     if preferPgxVariantSecondary == "pgturbo": import pgturbo
     if preferPgxVariantSecondary == "pgzero":  import pgzero
     if verbose: print("pgzte: secondary primary pgx variant", preferPgxVariantSecondary, "import succeeds")
